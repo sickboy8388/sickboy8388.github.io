@@ -1,0 +1,38 @@
+%%{init: {"flowchart": {"htmlLabels": false}} }%%
+flowchart LR
+  classDef attacker fill:#2a1712,stroke:#ff6b3d,stroke-width:2px,color:#ffd9c7;
+  classDef web fill:#241d10,stroke:#ffc247,stroke-width:1.5px,color:#ffe9bd;
+  classDef db fill:#10202a,stroke:#57a9c4,stroke-width:1.5px,color:#d5eef7;
+  classDef fs fill:#131f12,stroke:#8fce62,stroke-width:1.5px,color:#e4f5d6;
+
+  subgraph K3["Web service · xxx.yyy3.intra.zzz.net"]
+    direction LR
+    RA3(["Red Attack Box"]):::attacker
+    W3["xxx.yyy3<br/>web service"]:::web
+    F3[("Filesystem<br/>xxx.yyy3")]:::fs
+    RA3 -- "8 · accesso con password recuperata" --> W3
+    W3 -- "9 · C2 beacon · abuso CVE-2025-XXXX" --> W3
+    W3 -- "10 · filesystem enumeration" --> F3
+  end
+
+  subgraph K2["CRM · xxx.yyy2.intra.zzz.net"]
+    direction LR
+    RA2(["Red Attack Box"]):::attacker
+    W2["xxx.yyy2<br/>CRM"]:::web
+    F2[("Filesystem<br/>xxx.yyy2")]:::fs
+    RA2 -- "5 · accesso CRM con admin pw<br/>+ webshell" --> W2
+    W2 -- "6 · C2 beacon via webshell" --> W2
+    W2 -- "7 · filesystem enumeration" --> F2
+  end
+
+  subgraph K1["Ingresso · xxx.yyy1.intra.zzz.net"]
+    direction LR
+    RA1(["Red Attack Box"]):::attacker
+    W1["xxx.yyy1<br/>LoginServlet"]:::web
+    F1[("Filesystem<br/>xxx.yyy1")]:::fs
+    D1[("Databases<br/>xxx.yyy1")]:::db
+    RA1 -- "1 · SQLi /servlet/LoginServlet<br/>+ C2 beacon" --> W1
+    W1 -- "2 · FS enum via beacon<br/>/etc/crontab · mysql root pw hardcoded" --> F1
+    F1 -- "3 · DB enum · più DB + CRM" --> D1
+    D1 -- "4 · admin pw di 2 servizi<br/>pw CRM aggiornata" --> D1
+  end

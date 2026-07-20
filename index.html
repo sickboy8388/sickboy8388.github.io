@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; object-src 'none'" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="description" content="Mattia Pirro — Cyber Security Consultant & Penetration Tester. Vulnerability Assessment, Penetration Testing, Red Team, secure development." />
+  <meta name="color-scheme" content="dark light" />
+  <title>Mattia Pirro — Cyber Security Consultant</title>
+  <link rel="preload" href="css/styles.css" as="style" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Vai al contenuto</a>
+
+  <header class="site-header" id="top">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">MP</span>
+        <span class="brand-name">Mattia Pirro</span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" data-i18n="nav.about">Chi sono</a></li>
+        <li><a href="#skills" data-i18n="nav.skills">Competenze</a></li>
+        <li><a href="#chains" data-i18n="nav.chains">Kill chain</a></li>
+        <li><a href="#experience" data-i18n="nav.experience">Esperienza</a></li>
+        <li><a href="#projects" data-i18n="nav.projects">Progetti</a></li>
+        <li><a href="#certifications" data-i18n="nav.certs">Certificazioni</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contatti</a></li>
+        <li class="nav-lang">
+          <button id="langToggle" class="lang-btn" aria-label="Cambia lingua">
+            <span class="lang-flag">IT</span><span class="lang-sep">/</span><span class="lang-alt">EN</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="ticker" aria-hidden="true">
+        <span data-i18n="hero.ticker">ADVERSARY EMULATION · RED TEAMING · OFFENSIVE TOOLING · PENETRATION TESTING</span>
+      </div>
+      <div class="hero-inner">
+        <div class="hero-main">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Red Team Operator · Adversary Emulation &amp; Offensive Tooling</p>
+          <h1 class="hero-title">Mattia Pirro</h1>
+          <h2 class="hero-sub" data-i18n="hero.sub">Adversary emulation, red teaming e sviluppo di offensive tooling per infrastrutture critiche.</h2>
+          <p class="hero-lead" data-i18n="hero.lead">Emulo avversari reali per mettere alla prova rilevamento e risposta, sviluppo strumenti offensivi su misura e porto anni di penetration testing su infrastrutture aerospaziali, aeroportuali ed enti pubblici.</p>
+          <ul class="hero-chips">
+            <li data-i18n="hero.chip1">Adversary emulation &amp; red teaming</li>
+            <li data-i18n="hero.chip2">Offensive tooling &amp; automazione</li>
+            <li data-i18n="hero.chip3">CRTO · CRTP · MCRTA</li>
+          </ul>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#projects" data-i18n="hero.cta1">Vedi i progetti</a>
+            <a class="btn btn-ghost" href="#contact" data-i18n="hero.cta2">Contattami</a>
+          </div>
+        </div>
+
+        <aside class="snapshot-panel" aria-labelledby="snapshotTitle">
+          <div class="snapshot-panel-head">
+            <span class="snapshot-badge" data-i18n="snapshot.tag">RECRUITER SNAPSHOT</span>
+            <span class="snapshot-status"><span class="dot"></span><span data-i18n="snapshot.status">Disponibile</span></span>
+          </div>
+          <h2 id="snapshotTitle" class="snapshot-panel-title" data-i18n="snapshot.title">Sicurezza offensiva con mentalità da avversario.</h2>
+          <p class="snapshot-panel-desc" data-i18n="snapshot.desc">Profilo adatto a ruoli di red team, adversary emulation, offensive tooling e penetration testing in contesti enterprise e ad alta criticità.</p>
+          <ul class="snapshot-items">
+            <li>
+              <span class="snapshot-item-t" data-i18n="snapshot.c1.t">Adversary Emulation</span>
+              <span class="snapshot-item-d" data-i18n="snapshot.c1.d">Simulazione di avversari reali per validare rilevamento e risposta del blue team.</span>
+            </li>
+            <li>
+              <span class="snapshot-item-t" data-i18n="snapshot.c2.t">Offensive Tooling</span>
+              <span class="snapshot-item-d" data-i18n="snapshot.c2.d">Sviluppo di strumenti offensivi e recon engine su misura per le operazioni red team.</span>
+            </li>
+            <li>
+              <span class="snapshot-item-t" data-i18n="snapshot.c3.t">Red Team &amp; AD</span>
+              <span class="snapshot-item-d" data-i18n="snapshot.c3.d">Attacchi Active Directory, cloud e post-exploitation con TTP mappate su ATT&amp;CK.</span>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="about">
+      <div class="section-tag" data-i18n="about.tag">CHI SONO</div>
+      <h2 class="section-title" data-i18n="about.title">Un red teamer che pensa come un avversario e costruisce i propri strumenti.</h2>
+      <div class="about-layout">
+        <figure class="about-photo">
+          <img src="assets/profile.jpg" alt="Mattia Pirro" width="342" height="243" loading="lazy" />
+        </figure>
+        <div class="about-grid">
+          <div>
+            <h3 data-i18n="about.b1.t">Background</h3>
+            <p data-i18n="about.b1.d">Sono un Red Team Operator basato in Italia, con laurea magistrale in Informatica (curriculum Reti e Sicurezza) alla Sapienza di Roma, conseguita con 110/110 e lode. Oggi mi occupo di adversary emulation e sviluppo di offensive tooling in ambito difesa e forze armate, dopo anni di penetration testing su infrastrutture aerospaziali, aeroportuali ed enti pubblici.</p>
+          </div>
+          <div>
+            <h3 data-i18n="about.b2.t">Approccio</h3>
+            <p data-i18n="about.b2.d">Emulo tattiche, tecniche e procedure di avversari reali per mettere alla prova rilevamento e risposta. Mi piace capire come funziona davvero un sistema, costruire strumenti su misura quando serve e tradurre gli attacchi in report chiari e azioni di rimedio concrete per i team difensivi. Sperimento e valido le tecniche in un home lab Proxmox e documento ogni operazione in modo metodico.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section skills" id="skills">
+      <div class="section-tag" data-i18n="skills.tag">COSA SO FARE</div>
+      <h2 class="section-title" data-i18n="skills.title">Mentalità da avversario, esecuzione offensiva e strumenti su misura.</h2>
+      <div class="skills-grid">
+        <article class="skill"><span class="skill-num">01</span><h3 data-i18n="skills.s1.t">Adversary Emulation</h3><p data-i18n="skills.s1.d">Simulazione di avversari reali con TTP mappate su MITRE ATT&amp;CK per validare rilevamento e risposta del blue team.</p></article>
+        <article class="skill"><span class="skill-num">02</span><h3 data-i18n="skills.s2.t">Red Team Operations</h3><p data-i18n="skills.s2.d">Operazioni end-to-end con command &amp; control, evasione delle difese, movimento laterale e persistenza in ambienti enterprise.</p></article>
+        <article class="skill"><span class="skill-num">03</span><h3 data-i18n="skills.s3.t">Active Directory Attacks</h3><p data-i18n="skills.s3.d">Kerberoast, delegation, abuso di ACL, RBCD, DCSync, Golden/Silver ticket ed escalation cross-forest e inter-forest.</p></article>
+        <article class="skill"><span class="skill-num">04</span><h3 data-i18n="skills.s4.t">Offensive Tooling</h3><p data-i18n="skills.s4.d">Progettazione e sviluppo di strumenti offensivi e recon engine in Python, con architetture a plugin e automazione.</p></article>
+        <article class="skill"><span class="skill-num">05</span><h3 data-i18n="skills.s6.t">Penetration Testing &amp; VA</h3><p data-i18n="skills.s6.d">Vulnerability assessment e penetration testing su reti e applicazioni web, con exploitation manuale e report accurati.</p></article>
+        <article class="skill"><span class="skill-num">06</span><h3 data-i18n="skills.s5.t">Cloud &amp; Web Exploitation</h3><p data-i18n="skills.s5.d">Red teaming multi-cloud (AWS, Azure, GCP) e web exploitation, con catene SSRF, IMDS, SQS e container escape.</p></article>
+      </div>
+      <div class="tools">
+        <h3 data-i18n="skills.tools.t">Strumenti &amp; tecnologie</h3>
+        <ul class="tool-tags">
+          <li>Cobalt Strike</li><li>Sliver C2</li><li>BloodHound</li><li>Rubeus</li><li>Certipy</li><li>Mimikatz</li><li>Impacket</li>
+          <li>NetExec</li><li>BOFs</li><li>Burp Suite</li><li>Nmap</li><li>Metasploit</li>
+          <li>Python</li><li>PowerShell</li><li>Docker</li><li>Proxmox</li><li>Active Directory</li><li>MITRE ATT&amp;CK</li><li>AWS / Azure / GCP</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- METHOD -->
+    <section class="section method" id="method">
+      <div class="section-tag" data-i18n="method.tag">COME LAVORO</div>
+      <h2 class="section-title" data-i18n="method.title">Il ciclo di un'operazione red team, dalla ricognizione al debrief.</h2>
+      <ol class="steps">
+        <li><h3 data-i18n="method.m1.t">Ricognizione</h3><p data-i18n="method.m1.d">Mappatura della superficie di attacco e definizione degli obiettivi e delle regole d'ingaggio dell'operazione.</p></li>
+        <li><h3 data-i18n="method.m2.t">Accesso iniziale</h3><p data-i18n="method.m2.d">Ottenimento del foothold con TTP realistiche e stabilimento di un canale di command &amp; control resiliente.</p></li>
+        <li><h3 data-i18n="method.m3.t">Emulazione avversario</h3><p data-i18n="method.m3.d">Escalation, movimento laterale e persistenza emulando un avversario concreto per mettere alla prova le difese.</p></li>
+        <li><h3 data-i18n="method.m4.t">Report &amp; debrief</h3><p data-i18n="method.m4.d">Ricostruzione della catena di attacco, raccomandazioni di rilevamento e debrief con il blue team.</p></li>
+      </ol>
+    </section>
+
+    <!-- ATTACK CHAINS -->
+    <section class="section chains" id="chains">
+      <div class="section-tag" data-i18n="chains.tag">CATENE DI ATTACCO</div>
+      <h2 class="section-title" data-i18n="chains.title">Kill chain reali ricostruite durante le operazioni.</h2>
+      <p class="section-desc" data-i18n="chains.desc">Estratti anonimizzati di kill chain prodotte in attività di adversary emulation: host, parametri e riferimenti al cliente sono redatti. Mostrano come un accesso iniziale evolve in movimento laterale, esfiltrazione e azioni sull'obiettivo.</p>
+
+      <ul class="chain-legend" aria-hidden="true">
+        <li><span class="chip-dot dot-attacker"></span><span data-i18n="chains.leg.attacker">Attack box</span></li>
+        <li><span class="chip-dot dot-web"></span><span data-i18n="chains.leg.web">Host web</span></li>
+        <li><span class="chip-dot dot-db"></span><span data-i18n="chains.leg.db">Database</span></li>
+        <li><span class="chip-dot dot-fs"></span><span data-i18n="chains.leg.fs">Filesystem</span></li>
+        <li><span class="chip-dot dot-mail"></span><span data-i18n="chains.leg.mail">Mail server</span></li>
+      </ul>
+
+      <div class="chain-grid">
+        <figure class="chain-card">
+          <button type="button" class="chain-thumb"
+                  data-chain-base="assets/killchain1"
+                  data-chain-title="chains.c1.t"
+                  aria-label="Ingrandisci la kill chain multi-host">
+            <img src="assets/killchain1.svg" alt="Kill chain multi-host redatta" loading="lazy" />
+            <span class="chain-zoom" data-i18n="chains.zoom">Clic per ingrandire</span>
+          </button>
+          <figcaption>
+            <h3 class="chain-name" data-i18n="chains.c1.t">Catena multi-host esterna</h3>
+            <p data-i18n="chains.c1">Catena multi-host: arbitrary file read, webshell e C2 beacon, enumeration del filesystem, password in chiaro, accesso ai database e SMTP open relay; in parallelo SQLi con os-shell e XXE in-band.</p>
+          </figcaption>
+        </figure>
+        <figure class="chain-card">
+          <button type="button" class="chain-thumb"
+                  data-chain-base="assets/killchain2"
+                  data-chain-title="chains.c2.t"
+                  aria-label="Ingrandisci la kill chain su intranet">
+            <img src="assets/killchain2.svg" alt="Kill chain su intranet redatta" loading="lazy" />
+            <span class="chain-zoom" data-i18n="chains.zoom">Clic per ingrandire</span>
+          </button>
+          <figcaption>
+            <h3 class="chain-name" data-i18n="chains.c2.t">Catena su intranet</h3>
+            <p data-i18n="chains.c2">Catena su intranet: SQLi e C2 beacon, credenziali MySQL root hardcoded in crontab, enumeration dei database e di un CRM, riuso delle password per accessi privilegiati e abuso di una CVE per l'installazione del beacon.</p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section experience" id="experience">
+      <div class="section-tag" data-i18n="exp.tag">ESPERIENZA PROFESSIONALE</div>
+      <h2 class="section-title" data-i18n="exp.title">Red teaming per difesa, aerospazio, aeroporti, energia ed enti pubblici.</h2>
+      <div class="timeline">
+        <article class="tl-item">
+          <div class="tl-meta"><span class="tl-date" data-i18n="exp.j0.date">2024 — oggi</span></div>
+          <div class="tl-body">
+            <h3 data-i18n="exp.j0.role">Red Team Operator</h3>
+            <p class="tl-org">DEAS+ S.p.A. — Offensive Security</p>
+            <ul>
+              <li data-i18n="exp.j0.b1"><strong>Adversary emulation (difesa &amp; forze armate):</strong> emulazione delle TTP di gruppi APT mappate su MITRE ATT&amp;CK e Cyber Kill Chain per valutare le capacità di rilevamento, prevenzione e risposta su infrastrutture critiche e ad alta classificazione.</li>
+              <li data-i18n="exp.j0.b2"><strong>Superficie di attacco &amp; intelligence:</strong> mappatura della superficie esterna internet-facing e ricognizione OSINT/SOCMINT, con analisi di fonti aperte, social e data leak per costruire narrative offensive credibili.</li>
+              <li data-i18n="exp.j0.b3"><strong>Offensive tooling &amp; ricerca:</strong> sviluppo di strumenti offensivi proprietari e ricerca in ambito cybersecurity e hardware hacking a supporto delle operazioni.</li>
+              <li data-i18n="exp.j0.b4"><strong>Operazioni end-to-end:</strong> accesso iniziale, movimento laterale e simulazione di esfiltrazione su Active Directory ed endpoint, con documentazione strutturata, scoring CVSS 4.0 e raccomandazioni di remediation.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="tl-item">
+          <div class="tl-meta"><span class="tl-date" data-i18n="exp.j1.date">Mag 2022 — 2024</span></div>
+          <div class="tl-body">
+            <h3 data-i18n="exp.j1.role">Cyber Security Consultant</h3>
+            <p class="tl-org">Business Integration Partners S.p.A. — Milano</p>
+            <ul>
+              <li data-i18n="exp.j1.b1"><strong>Thales Alenia Space:</strong> VA/PT su infrastrutture ground e satellitari, ground station e reti di comunicazione in più centri europei.</li>
+              <li data-i18n="exp.j1.b2"><strong>ExoMars:</strong> Security Management Plan e Risk Assessment completo, con protocolli di sicurezza e piani di contingenza.</li>
+              <li data-i18n="exp.j1.b3"><strong>Aeroporti di Roma:</strong> network penetration testing su soluzioni IT in ambiente aeroportuale.</li>
+              <li data-i18n="exp.j1.b4"><strong>INPS:</strong> penetration testing su applicazioni web e network shares del dominio.</li>
+              <li data-i18n="exp.j1.b5"><strong>Enel:</strong> penetration testing su asset web e condivisioni di rete.</li>
+              <li data-i18n="exp.j1.b6"><strong>Leonardo:</strong> network engineer per la migrazione SIEM a fini di disaster recovery.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="tl-item">
+          <div class="tl-meta"><span class="tl-date" data-i18n="exp.j2.date">Feb 2019 — Apr 2022</span></div>
+          <div class="tl-body">
+            <h3 data-i18n="exp.j2.role">Cyber Security Consultant</h3>
+            <p class="tl-org">TLOGOS S.r.l. — Roma</p>
+            <ul>
+              <li data-i18n="exp.j2.b1"><strong>ESA — Key Management System:</strong> project leader e security engineer per un sistema multi-host di gestione chiavi crittografiche, conformità FIPS con HSM per il root-of-trust.</li>
+              <li data-i18n="exp.j2.b2"><strong>ESA ISS — Penetration Testing:</strong> engagement su asset ground/space e sistemi di comunicazione della Stazione Spaziale Internazionale, in più centri ESA europei.</li>
+              <li data-i18n="exp.j2.b3"><strong>ESA ISS — Hardening:</strong> asset inventory, vulnerability assessment, patch management e configuration hardening su payload e infrastruttura ground.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section education" id="education">
+      <div class="section-tag" data-i18n="edu.tag">FORMAZIONE</div>
+      <h2 class="section-title" data-i18n="edu.title">Informatica, reti e sicurezza alla Sapienza.</h2>
+      <div class="cards-3">
+        <article class="card">
+          <span class="card-date">2016 — 2018</span>
+          <h3 data-i18n="edu.e1.t">Laurea Magistrale in Informatica</h3>
+          <p data-i18n="edu.e1.d">Sapienza Università di Roma — 110/110 e lode. Curriculum Reti e Sicurezza. Tesi sull'analisi di relazioni semantiche tra comandi di script con Word Embedding e Deep Learning.</p>
+        </article>
+        <article class="card">
+          <span class="card-date">2012 — 2016</span>
+          <h3 data-i18n="edu.e2.t">Laurea Triennale in Informatica</h3>
+          <p data-i18n="edu.e2.d">Sapienza Università di Roma — 94/110. Tesi su un'architettura di riferimento per un modello di Federated Cloud.</p>
+        </article>
+        <article class="card">
+          <span class="card-date">2002 — 2007</span>
+          <h3 data-i18n="edu.e3.t">Liceo Scientifico</h3>
+          <p data-i18n="edu.e3.d">Liceo Scientifico "L. Spallanzani", Tivoli (RM).</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section projects" id="projects">
+      <div class="section-tag" data-i18n="proj.tag">PROGETTI &amp; TOOLING</div>
+      <h2 class="section-title" data-i18n="proj.title">Strumenti offensivi, ricerca su vulnerabilità e writeup.</h2>
+      <p class="section-desc" data-i18n="proj.desc">Progetti personali e di ricerca che mostrano come costruisco strumenti, cerco vulnerabilità e documento catene di attacco reali.</p>
+      <div class="proj-grid">
+        <article class="proj-card">
+          <div class="proj-head"><h3>MCPwn</h3><span class="proj-kind" data-i18n="proj.p5.kind">Offensive Security Toolkit</span></div>
+          <p data-i18n="proj.p5.d">Toolkit di sicurezza offensiva che collega un assistente AI a una Kali Linux dockerizzata via Model Context Protocol. Modalità minimale con tool infrastrutturali e ~200 wrapper specializzati (network, pwn, crypto, forensics) raggiungibili tramite catalog discovery, con sessioni, artifact store e job asincroni.</p>
+          <ul class="proj-tags"><li>Python</li><li>MCP</li><li>Docker / Kali</li><li>Red Team Automation</li></ul>
+        </article>
+        <article class="proj-card">
+          <div class="proj-head"><h3>Rir-Boy</h3><span class="proj-kind" data-i18n="proj.p1.kind">Recon &amp; OSINT Engine</span></div>
+          <p data-i18n="proj.p1.d">Red team recon e OSINT engine in Python che orchestra oltre 40 strumenti in una knowledge graph: enumerazione sottodomini, mappatura ASN, asse identità/social (Sherlock, Maigret, Holehe, h8mail) e arricchimento dei dati con dashboard web. Architettura modulare a plugin (Registry, Strategy, Observer/SSE), deploy Docker con autenticazione OIDC via Keycloak e wiki MkDocs.</p>
+          <ul class="proj-tags"><li>Python</li><li>OSINT</li><li>Knowledge graph</li><li>Plugin architecture</li><li>Docker</li><li>OIDC / Keycloak</li></ul>
+        </article>
+        <article class="proj-card">
+          <div class="proj-head"><h3>CRTP Prep</h3><span class="proj-kind" data-i18n="proj.p4.kind">Active Directory</span></div>
+          <p data-i18n="proj.p4.d">Materiale strutturato di preparazione all'attacco di ambienti Active Directory: Kerberoasting, DCSync, RBCD, trust exploitation, abuse di database link e catene cross-forest.</p>
+          <ul class="proj-tags"><li>Kerberos</li><li>DCSync</li><li>Trust Abuse</li><li>SQL Links</li></ul>
+        </article>
+        <article class="proj-card">
+          <div class="proj-head"><h3>ndayDevExtreme</h3><span class="proj-kind" data-i18n="proj.p2.kind">Security Research</span></div>
+          <p data-i18n="proj.p2.d">Security code review di una release DevExtreme del 2023 per individuare n-day dormienti in assenza di un security program del vendor. Analisi statica del codice alla ricerca di vulnerabilità sfruttabili.</p>
+          <ul class="proj-tags"><li>Code Review</li><li>N-day Hunting</li><li>AppSec</li></ul>
+        </article>
+        <article class="proj-card">
+          <div class="proj-head"><h3>HTB Writeups</h3><span class="proj-kind" data-i18n="proj.p3.kind">CTF / Red Team</span></div>
+          <p data-i18n="proj.p3.d">Raccolta di writeup Hack The Box: box Insane multi-dominio Active Directory con catene cross-realm Kerberos e AD CS (ESC13 → RBCD → DCSync → ESC1) e, in coda, box cloud Hard con catene SSRF → IMDS → SQS → container escape su AWS.</p>
+          <ul class="proj-tags"><li>Active Directory</li><li>Kerberos</li><li>Privilege Escalation</li><li>Cloud (AWS)</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section class="section certifications" id="certifications">
+      <div class="section-tag" data-i18n="cert.tag">CERTIFICAZIONI</div>
+      <h2 class="section-title" data-i18n="cert.title">Competenze validate sul campo.</h2>
+      <div class="cert-list">
+        <article class="cert">
+          <div class="cert-head"><h3>Red Team Operator (CRTO)</h3><span class="cert-date">Giu 2026</span></div>
+          <p class="cert-org">Zero-Point Security — ID 20547045</p>
+          <p data-i18n="cert.crto.d">Certificazione hands-on su adversary simulation con Cobalt Strike: attacchi Active Directory, command &amp; control, evasione delle difese, movimento laterale e persistenza in ambienti enterprise.</p>
+          <a class="cert-link" href="https://certs.zeropointsecurity.co.uk/36bdd2a7-3d4e-4bb2-a89b-b40288f95c3a" target="_blank" rel="noopener noreferrer" data-i18n="cert.link">Vedi credenziale</a>
+        </article>
+        <article class="cert">
+          <div class="cert-head"><h3>Certified Red Team Professional (CRTP)</h3><span class="cert-date">Apr 2026</span></div>
+          <p class="cert-org">Altered Security — ID ADLID13763</p>
+          <p data-i18n="cert.crtp.d">Enumerazione ed escalation in Active Directory: Kerberoast, delegation, abuso di gruppi protetti, dominance con Golden/Silver ticket, DCSync, abuso di ACL ed escalation cross-forest e inter-forest.</p>
+          <a class="cert-link" href="https://www.credential.net/081caea7-e5d2-4b0b-844b-ca0ab9b32cb4" target="_blank" rel="noopener noreferrer" data-i18n="cert.link">Vedi credenziale</a>
+        </article>
+        <article class="cert">
+          <div class="cert-head"><h3>Multi-Cloud Red Team Analyst (MCRTA)</h3><span class="cert-date">Set 2025</span></div>
+          <p class="cert-org">CyberWarFare Labs — ID 68daa2436284c6fa9300efce</p>
+          <p data-i18n="cert.mcrta.d">Red teaming su ambienti multi-cloud (AWS, Azure e Google Cloud) con approccio hands-on ad attacco ed escalation delle piattaforme cloud.</p>
+          <a class="cert-link" href="https://labs.cyberwarfare.live/credential/achievement/68daa2436284c6fa9300efce" target="_blank" rel="noopener noreferrer" data-i18n="cert.link">Vedi credenziale</a>
+        </article>
+        <article class="cert">
+          <div class="cert-head"><h3>HTB Certified Web Exploitation Specialist</h3><span class="cert-date">Dic 2023</span></div>
+          <p class="cert-org">Hack The Box — ID HTBCERT-A5D34D4011</p>
+          <p data-i18n="cert.c1.d">Certificazione hands-on di Hack The Box (ex CBBH) su web exploitation e penetration testing di applicazioni web: individuazione di problemi di sicurezza, concatenamento di vulnerabilità a massimo impatto e report di livello commerciale.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONFERENCES -->
+    <section class="section conferences" id="conferences">
+      <div class="section-tag" data-i18n="conf.tag">CONFERENZE &amp; WORKSHOP</div>
+      <h2 class="section-title" data-i18n="conf.title">Interventi ai workshop ESA ISS Security.</h2>
+      <div class="cards-3">
+        <article class="card">
+          <span class="card-date">2020 — Telecon</span>
+          <h3 data-i18n="conf.f1.t">KaaS — Key Management System as a Service</h3>
+          <p data-i18n="conf.f1.d">Proof of concept di un proxy che distribuisce chiavi crittografiche a sistemi fidati, con chiavi gestite su key management system commerciale (Thales).</p>
+        </article>
+        <article class="card">
+          <span class="card-date">2020 — Telecon</span>
+          <h3 data-i18n="conf.f2.t">Identity Provider &amp; MFA</h3>
+          <p data-i18n="conf.f2.d">Demo di un web server con tre aree protette da metodi di autenticazione diversi: OTP, GridSure e certificato X.509.</p>
+        </article>
+        <article class="card">
+          <span class="card-date">2019 — Madrid</span>
+          <h3 data-i18n="conf.f3.t">Data Protection su infrastruttura SCB</h3>
+          <p data-i18n="conf.f3.d">Estensione di una soluzione di document management (OpenKM) con cifratura/decifratura AES delle chiavi fornite da un key management system commerciale (Thales).</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="section-tag" data-i18n="contact.tag">CONTATTI</div>
+      <h2 class="section-title" data-i18n="contact.title">Parliamone.</h2>
+      <p class="section-desc" data-i18n="contact.desc">Disponibile per ruoli di red team, adversary emulation, offensive tooling e penetration testing.</p>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <span class="contact-label" data-i18n="contact.email">Email</span>
+          <a href="mailto:mattia.pirro@gmail.com" rel="noopener noreferrer">mattia.pirro@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label" data-i18n="contact.location">Località</span>
+          <span data-i18n="contact.locationv">Guidonia (Roma), Italia</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label" data-i18n="contact.langs">Lingue</span>
+          <span data-i18n="contact.langsv">Italiano (madrelingua) · Inglese (C1)</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
+    <div class="lightbox-bar">
+      <h3 class="lightbox-title" id="lightboxTitle"></h3>
+      <div class="lightbox-controls">
+        <button type="button" class="lb-btn" id="lbZoomOut" aria-label="Riduci">−</button>
+        <button type="button" class="lb-btn" id="lbReset" aria-label="Adatta">⟳</button>
+        <button type="button" class="lb-btn" id="lbZoomIn" aria-label="Ingrandisci">+</button>
+        <button type="button" class="lb-btn lb-close" id="lbClose" aria-label="Chiudi">✕</button>
+      </div>
+    </div>
+    <div class="lightbox-stage" id="lightboxStage">
+      <img id="lightboxImg" src="" alt="" draggable="false" />
+    </div>
+    <p class="lightbox-hint" data-i18n="lightbox.hint">Trascina per spostare · rotella o +/− per lo zoom · Esc per chiudere</p>
+  </div>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year">2026</span> Mattia Pirro · <span data-i18n="footer.tag">Red Team Operator · Adversary Emulation &amp; Offensive Tooling</span></p>
+    <a href="#top" class="to-top" data-i18n="footer.top">Torna su ↑</a>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

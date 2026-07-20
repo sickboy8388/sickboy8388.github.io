@@ -1,0 +1,13 @@
+# Log e note locali (mai pubblicare)
+decision.log
+malskill/
+
+# Sistema operativo / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Artefatti temporanei
+*.log

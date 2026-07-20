@@ -1,0 +1,50 @@
+%%{init: {"flowchart": {"htmlLabels": false}} }%%
+flowchart LR
+  classDef attacker fill:#2a1712,stroke:#ff6b3d,stroke-width:2px,color:#ffd9c7;
+  classDef web fill:#241d10,stroke:#ffc247,stroke-width:1.5px,color:#ffe9bd;
+  classDef db fill:#10202a,stroke:#57a9c4,stroke-width:1.5px,color:#d5eef7;
+  classDef fs fill:#131f12,stroke:#8fce62,stroke-width:1.5px,color:#e4f5d6;
+  classDef mail fill:#241125,stroke:#c98fd6,stroke-width:1.5px,color:#f3e2f7;
+  classDef stop fill:#17151c,stroke:#5a5560,stroke-width:1px,color:#a49caa,stroke-dasharray:5 4;
+
+  subgraph C3["XXE · aaa3.bbb.net"]
+    direction LR
+    A3(["Attack Box"]):::attacker
+    W3["aaa3.bbb.net"]:::web
+    F3[("Filesystem<br/>aaa3.bbb.net")]:::fs
+    X3["azioni successive<br/>interrotte su richiesta cliente"]:::stop
+    A3 -- "1 · XXE in-band file read<br/>(file XBRL, XML-like)" --> W3
+    W3 -- "2 · filesystem enumeration" --> F3
+    W3 -- "3 · exfiltration credenziali<br/>Finance e Payment · CI/CD" --> A3
+    F3 -. "4" .-> X3
+  end
+
+  subgraph C2["SQLi · aaa2.bbb.net"]
+    direction LR
+    A2(["Attack Box"]):::attacker
+    W2["aaa2.bbb.net<br/>login form"]:::web
+    D2[("Databases<br/>aaa2.bbb.net")]:::db
+    F2[("Filesystem<br/>aaa2.bbb.net")]:::fs
+    X2["azioni successive<br/>interrotte su richiesta cliente"]:::stop
+    A2 -- "1 · SQLi sul login form" --> W2
+    W2 -- "2 · database enumeration" --> D2
+    D2 -- "3 · OS privilegiato via os-shell (SQLi)" --> F2
+    F2 -. "4" .-> X2
+  end
+
+  subgraph C1["Catena principale · aaa1.bbb.net → mail.bbb.net"]
+    direction LR
+    A1(["Attack Box"]):::attacker
+    W1["aaa1.bbb.net<br/>web app"]:::web
+    F1[("Filesystem<br/>aaa1.bbb.net")]:::fs
+    D1[("Databases<br/>aaa1.bbb.net")]:::db
+    M1["mail.bbb.net"]:::mail
+    A1 -- "1 · Arbitrary File Read<br/>/?param=REDACTED" --> W1
+    W1 -- "2 · upload → webshell<br/>3 · C2 beacon" --> W1
+    W1 -- "4 · filesystem enum via beacon" --> F1
+    F1 -- "5 · password in chiaro · subdomain<br/>Postfix SMTP esposto" --> F1
+    F1 -- "6 · databases enumeration" --> D1
+    D1 -- "7 · accesso DB con password in chiaro" --> D1
+    F1 -- "8 · mail server via telnet · no auth" --> M1
+    M1 -- "9 · SMTP open relay → dominio esterno" --> A1
+  end
