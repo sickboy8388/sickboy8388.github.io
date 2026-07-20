@@ -183,12 +183,25 @@
       if (img) img.setAttribute("src", chainSrc(base, lang));
     });
     try { localStorage.setItem("mp-lang", lang); } catch (e) {}
+    /* Reflect the language in the URL so it can be shared/bookmarked.
+     * Italian keeps the clean URL; English is exposed as ?lang=en. */
+    try {
+      var url = new URL(window.location.href);
+      if (lang === "en") url.searchParams.set("lang", "en");
+      else url.searchParams.delete("lang");
+      window.history.replaceState(null, "", url.pathname + url.search + url.hash);
+    } catch (e) {}
   }
 
+  /* Language priority: ?lang= URL param > localStorage > Italian default. */
   var current = "it";
   try {
     var saved = localStorage.getItem("mp-lang");
     if (saved === "en" || saved === "it") current = saved;
+  } catch (e) {}
+  try {
+    var urlLang = new URL(window.location.href).searchParams.get("lang");
+    if (urlLang === "en" || urlLang === "it") current = urlLang;
   } catch (e) {}
   applyLang(current);
 
