@@ -125,6 +125,16 @@
     "cert.link": "View credential",
     "cert.c1.d": "A hands-on Hack The Box certification (formerly CBBH) on web exploitation and web application penetration testing: spotting security issues, chaining vulnerabilities for maximum impact and producing commercial-grade reports.",
 
+    "nav.ctf": "CTF",
+    "ctf.tag": "CTF &amp; COMPETITIONS",
+    "ctf.title": "Placements in international competitions.",
+    "ctf.desc": "Team capture the flag events run by Hack The Box, across the Global Cyber Skills Benchmark (company-vs-company competition) and Cyber Apocalypse (public event): web, pwn, reversing, crypto, forensics and cloud under time pressure.",
+    "ctf.k.rank": "Ranking", "ctf.k.solved": "Challenges solved", "ctf.k.points": "Points", "ctf.k.team": "Team",
+    "ctf.e1.date": "24 — 29 Jul 2026", "ctf.e1.rank": "81st / 6744",
+    "ctf.e2.date": "15 — 20 May 2026", "ctf.e2.rank": "15th / 589",
+    "ctf.e3.date": "23 — 27 May 2025", "ctf.e3.rank": "27th / 796",
+    "ctf.e4.date": "21 — 26 Mar 2025", "ctf.e4.rank": "36th / 8130",
+
     "conf.tag": "CONFERENCES &amp; WORKSHOPS",
     "conf.title": "Talks at the ESA ISS Security workshops.",
     "conf.f1.t": "KaaS — Key Management System as a Service",
@@ -250,9 +260,9 @@
     revealTargets.forEach(function (el) { el.classList.add("visible"); });
   }
 
-  /* Kill-chain lightbox: zoom + pan on the pre-rendered Mermaid SVGs */
+  /* Lightbox with zoom + pan: kill-chain SVGs and CTF certificates */
   var lightbox = document.getElementById("lightbox");
-  var thumbs = document.querySelectorAll(".chain-thumb");
+  var thumbs = document.querySelectorAll(".chain-thumb, .ctf-thumb");
   if (lightbox && thumbs.length) {
     var lbImg = document.getElementById("lightboxImg");
     var lbTitle = document.getElementById("lightboxTitle");
@@ -270,13 +280,10 @@
       render();
     }
 
-    function open(src, alt, titleKey) {
+    function open(src, alt, title) {
       lbImg.setAttribute("src", src);
       lbImg.setAttribute("alt", alt || "");
-      if (lbTitle) {
-        var dict = DICT[current] || DICT.it;
-        lbTitle.textContent = (titleKey && dict[titleKey]) ? dict[titleKey] : "";
-      }
+      if (lbTitle) lbTitle.textContent = title || "";
       reset();
       lightbox.hidden = false;
       lightbox.setAttribute("aria-hidden", "false");
@@ -294,13 +301,19 @@
       if (lastFocus && lastFocus.focus) lastFocus.focus();
     }
 
-    thumbs.forEach(function (btn) {
+    /* Kill chains resolve a localised SVG from their base name; certificates
+     * carry a fixed image and an untranslated event title. */
+    Array.prototype.forEach.call(thumbs, function (btn) {
       btn.addEventListener("click", function () {
         lastFocus = btn;
         var img = btn.querySelector("img");
-        open(chainSrc(btn.getAttribute("data-chain-base"), current),
-             img ? img.getAttribute("alt") : "",
-             btn.getAttribute("data-chain-title"));
+        var src = btn.getAttribute("data-lb-src") ||
+                  chainSrc(btn.getAttribute("data-chain-base"), current);
+        var dict = DICT[current] || DICT.it;
+        var titleKey = btn.getAttribute("data-chain-title");
+        var title = btn.getAttribute("data-lb-title") ||
+                    (titleKey && dict[titleKey]) || "";
+        open(src, img ? img.getAttribute("alt") : "", title);
       });
     });
 
