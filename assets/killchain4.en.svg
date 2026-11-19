@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 760" style="background-color:#17151c" role="graphics-document document" aria-roledescription="flowchart">
+<style>
+  text{font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;fill:#f2ede6}
+  .node{rx:6;ry:6;stroke-width:1.5}
+  .edge{stroke:#8f8797;stroke-width:1.5;fill:none;marker-end:url(#arrow)}
+  .cluster{fill:none;stroke:#2c2833;stroke-width:1.5;stroke-dasharray:6,4;rx:10;ry:10}
+  .cluster-label{font-size:13px;fill:#ff6b3d;font-weight:700;letter-spacing:1px}
+  .node-label{font-size:13px;text-anchor:middle;dominant-baseline:central}
+  .sub-label{font-size:11px;fill:#a49caa;text-anchor:middle;dominant-baseline:central}
+  .dead{opacity:0.45}
+  .dead-line{stroke:#ff5d5d;stroke-width:2;stroke-dasharray:none}
+</style>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,3.5 L0,7z" fill="#8f8797"/></marker>
+</defs>
+
+<!-- Cluster: Initial Access -->
+<rect class="cluster" x="20" y="60" width="440" height="280"/>
+<text class="cluster-label" x="40" y="90">INITIAL ACCESS</text>
+
+<!-- Cluster: Enumeration -->
+<rect class="cluster" x="500" y="60" width="400" height="280"/>
+<text class="cluster-label" x="520" y="90">AD ENUMERATION</text>
+
+<!-- Cluster: Credential Access -->
+<rect class="cluster" x="940" y="60" width="400" height="280"/>
+<text class="cluster-label" x="960" y="90">CREDENTIAL ACCESS</text>
+
+<!-- Cluster: Privilege Escalation -->
+<rect class="cluster" x="20" y="400" width="860" height="320"/>
+<text class="cluster-label" x="40" y="430">PRIVILEGE ESCALATION — ADCS</text>
+
+<!-- Cluster: Lateral Movement -->
+<rect class="cluster" x="940" y="400" width="400" height="320"/>
+<text class="cluster-label" x="960" y="430">LATERAL MOVEMENT</text>
+
+<!-- Node 1: DLL Sideloading -->
+<rect class="node" x="40" y="120" width="220" height="56" fill="#1a1210" stroke="#e07a3a"/>
+<text class="node-label" x="150" y="142">DLL Sideloading</text>
+<text class="sub-label" x="150" y="160">python.exe + IAT-patched DLL</text>
+
+<!-- Node 2: Custom Loader -->
+<rect class="node" x="40" y="210" width="220" height="56" fill="#1a1210" stroke="#e07a3a"/>
+<text class="node-label" x="150" y="232">Custom Loader</text>
+<text class="sub-label" x="150" y="250">AMSI (CLR) + ETW (HWBP) bypass</text>
+
+<!-- Node 3: HTTP Beacon -->
+<rect class="node" x="280" y="140" width="160" height="56" fill="#1a1210" stroke="#e07a3a"/>
+<text class="node-label" x="360" y="162">HTTP Beacon</text>
+<text class="sub-label" x="360" y="180">Async, file server</text>
+
+<!-- Node 4: Seatbelt SA -->
+<rect class="node" x="520" y="120" width="180" height="56" fill="#121a24" stroke="#5b9bd5"/>
+<text class="node-label" x="610" y="142">Seatbelt</text>
+<text class="sub-label" x="610" y="160">Host SA, AV/EDR check</text>
+
+<!-- Node 5: ADSearch LDAP -->
+<rect class="node" x="520" y="210" width="180" height="56" fill="#121a24" stroke="#5b9bd5"/>
+<text class="node-label" x="610" y="232">ADSearch</text>
+<text class="sub-label" x="610" y="250">Targeted LDAP queries</text>
+
+<!-- Node 6: Certify ADCS -->
+<rect class="node" x="720" y="210" width="160" height="56" fill="#121a24" stroke="#5b9bd5"/>
+<text class="node-label" x="800" y="232">Certify</text>
+<text class="sub-label" x="800" y="250">ADCS enum, vuln. templates</text>
+
+<!-- Node 7: Targeted Kerberoast -->
+<rect class="node" x="960" y="120" width="200" height="56" fill="#121a24" stroke="#5b9bd5"/>
+<text class="node-label" x="1060" y="142">Targeted Kerberoast</text>
+<text class="sub-label" x="1060" y="160">Single SPN → offline crack</text>
+
+<!-- Node 8: SharpChromium -->
+<rect class="node" x="960" y="210" width="200" height="56" fill="#121a24" stroke="#5b9bd5"/>
+<text class="node-label" x="1060" y="232">SharpChromium</text>
+<text class="sub-label" x="1060" y="250">Browser creds via DPAPI</text>
+
+<!-- Node 9: DPAPI triage -->
+<rect class="node" x="1180" y="210" width="140" height="56" fill="#121a24" stroke="#5b9bd5"/>
+<text class="node-label" x="1250" y="232">DPAPI</text>
+<text class="sub-label" x="1250" y="250">Credential triage</text>
+
+<!-- Node 10: ESC1 — Cert enrollment -->
+<rect class="node" x="40" y="460" width="240" height="56" fill="#121a24" stroke="#5b9bd5"/>
+<text class="node-label" x="160" y="482">ESC1 — Cert Enrollment</text>
+<text class="sub-label" x="160" y="500">SAN impersonation via ADCS</text>
+
+<!-- Node 11: Custom .NET Tool -->
+<rect class="node" x="40" y="550" width="240" height="56" fill="#1a1210" stroke="#e07a3a"/>
+<text class="node-label" x="160" y="572">Custom .NET Tool</text>
+<text class="sub-label" x="160" y="590">Managed crypto (no COM)</text>
+
+<!-- Node 12: Certificate issued -->
+<rect class="node" x="320" y="460" width="220" height="56" fill="#121a24" stroke="#5b9bd5"/>
+<text class="node-label" x="430" y="482">Certificate Issued</text>
+<text class="sub-label" x="430" y="500">SAN=Administrator</text>
+
+<!-- Node 13: PKINIT blocked (dead path) -->
+<rect class="node dead" x="320" y="550" width="220" height="56" fill="#1f1c26" stroke="#ff5d5d"/>
+<text class="node-label dead" x="430" y="572">PKINIT Blocked</text>
+<text class="sub-label dead" x="430" y="590">KB5014754 strong mapping</text>
+<line class="dead-line" x1="320" y1="550" x2="540" y2="606"/>
+<line class="dead-line" x1="540" y1="550" x2="320" y2="606"/>
+
+<!-- Node 14: GodPotato (dead) -->
+<rect class="node dead" x="580" y="460" width="200" height="56" fill="#1f1c26" stroke="#ff5d5d"/>
+<text class="node-label dead" x="680" y="482">GodPotato</text>
+<text class="sub-label dead" x="680" y="500">DCOM fail in sideload ctx</text>
+<line class="dead-line" x1="580" y1="460" x2="780" y2="516"/>
+<line class="dead-line" x1="780" y1="460" x2="580" y2="516"/>
+
+<!-- Node 15: Alternative paths -->
+<rect class="node" x="580" y="550" width="260" height="56" fill="#2a1712" stroke="#ff6b3d"/>
+<text class="node-label" x="710" y="572" fill="#ff6b3d">Alternative Paths</text>
+<text class="sub-label" x="710" y="590">PrintSpoofer, PassTheCert, certipy</text>
+
+<!-- Node 16: RunasCs -->
+<rect class="node" x="960" y="460" width="200" height="56" fill="#1a1210" stroke="#e07a3a"/>
+<text class="node-label" x="1060" y="482">RunasCs</text>
+<text class="sub-label" x="1060" y="500">Second beacon with creds</text>
+
+<!-- Node 17: Second beacon -->
+<rect class="node" x="960" y="560" width="200" height="56" fill="#1a1210" stroke="#e07a3a"/>
+<text class="node-label" x="1060" y="582">Second Beacon</text>
+<text class="sub-label" x="1060" y="600">SPN account context</text>
+
+<!-- Node 18: Domain Admin path -->
+<rect class="node" x="960" y="650" width="200" height="56" fill="#2a1712" stroke="#ff6b3d"/>
+<text class="node-label" x="1060" y="672" fill="#ff6b3d">Domain Admin</text>
+<text class="sub-label" x="1060" y="690">Golden Certificate / RBCD</text>
+
+<!-- Edges -->
+<path class="edge" d="M150,176 L150,210"/>
+<path class="edge" d="M260,168 L280,168"/>
+<path class="edge" d="M440,168 L520,148"/>
+<path class="edge" d="M610,176 L610,210"/>
+<path class="edge" d="M700,238 L720,238"/>
+<path class="edge" d="M700,238 L960,148"/>
+<path class="edge" d="M700,238 L960,238"/>
+<path class="edge" d="M1160,238 L1180,238"/>
+<path class="edge" d="M800,266 L160,460"/>
+<path class="edge" d="M160,516 L160,550"/>
+<path class="edge" d="M280,488 L320,488"/>
+<path class="edge" d="M430,516 L430,550"/>
+<path class="edge" d="M540,488 L580,488"/>
+<path class="edge" d="M540,578 L580,578"/>
+<path class="edge" d="M1060,176 L1060,460"/>
+<path class="edge" d="M1060,516 L1060,560"/>
+<path class="edge" d="M1060,616 L1060,650"/>
+</svg>

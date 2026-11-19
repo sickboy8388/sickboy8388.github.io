@@ -131,7 +131,7 @@
         <ul class="tool-tags">
           <li>Cobalt Strike</li><li>Sliver C2</li><li>BloodHound</li><li>Rubeus</li><li>Certipy</li><li>Mimikatz</li><li>Impacket</li>
           <li>NetExec</li><li>BOFs</li><li>Burp Suite</li><li>Nmap</li><li>Metasploit</li>
-          <li>Python</li><li>PowerShell</li><li>Docker</li><li>Proxmox</li><li>Active Directory</li><li>MITRE ATT&amp;CK</li><li>AWS / Azure / GCP</li>
+          <li>Python</li><li>Rust</li><li>C/C++</li><li>PowerShell</li><li>Docker</li><li>Proxmox</li><li>Active Directory</li><li>MITRE ATT&amp;CK</li><li>AdaptixC2</li><li>Stratum C2</li><li>AWS / Azure / GCP</li>
         </ul>
       </div>
     </section>
@@ -160,6 +160,8 @@
         <li><span class="chip-dot dot-db"></span><span data-i18n="chains.leg.db">Database</span></li>
         <li><span class="chip-dot dot-fs"></span><span data-i18n="chains.leg.fs">Filesystem</span></li>
         <li><span class="chip-dot dot-mail"></span><span data-i18n="chains.leg.mail">Mail server</span></li>
+        <li><span class="chip-dot dot-ad"></span><span data-i18n="chains.leg.ad">Active Directory</span></li>
+        <li><span class="chip-dot dot-c2"></span><span data-i18n="chains.leg.c2">C2 / Beacon</span></li>
       </ul>
 
       <div class="chain-grid">
@@ -187,6 +189,32 @@
           <figcaption>
             <h3 class="chain-name" data-i18n="chains.c2.t">Catena su intranet</h3>
             <p data-i18n="chains.c2">Catena su intranet: SQLi e C2 beacon, credenziali MySQL root hardcoded in crontab, enumeration dei database e di un CRM, riuso delle password per accessi privilegiati e abuso di una CVE per l'installazione del beacon.</p>
+          </figcaption>
+        </figure>
+        <figure class="chain-card">
+          <button type="button" class="chain-thumb"
+                  data-chain-base="assets/killchain3"
+                  data-chain-title="chains.c3.t"
+                  aria-label="Ingrandisci la kill chain multi-foresta AD">
+            <img src="assets/killchain3.svg" alt="Kill chain multi-foresta Active Directory redatta" loading="lazy" />
+            <span class="chain-zoom" data-i18n="chains.zoom">Clic per ingrandire</span>
+          </button>
+          <figcaption>
+            <h3 class="chain-name" data-i18n="chains.c3.t">Catena multi-foresta Active Directory</h3>
+            <p data-i18n="chains.c3">Kill chain multi-foresta AD: Kerberoast nel dominio figlio, golden ticket con SID History per Enterprise Admin, DCSync e referral TGT forgiato offline, ticket cross-realm verso un'enclave con trust esterno, RBCD e S4U2Proxy per il controllo del target finale.</p>
+          </figcaption>
+        </figure>
+        <figure class="chain-card">
+          <button type="button" class="chain-thumb"
+                  data-chain-base="assets/killchain4"
+                  data-chain-title="chains.c4.t"
+                  aria-label="Ingrandisci la kill chain red team assessment">
+            <img src="assets/killchain4.svg" alt="Kill chain red team assessment OPSEC-scored redatta" loading="lazy" />
+            <span class="chain-zoom" data-i18n="chains.zoom">Clic per ingrandire</span>
+          </button>
+          <figcaption>
+            <h3 class="chain-name" data-i18n="chains.c4.t">Red team assessment OPSEC-scored</h3>
+            <p data-i18n="chains.c4">Red team assessment con scoring OPSEC: accesso iniziale via DLL sideloading con loader custom (AMSI+ETW bypass), enumerazione AD mirata, Kerberoast selettivo, dump credenziali browser, enrollment di certificati ADCS con tool .NET custom e tentativi di privilege escalation multipli.</p>
           </figcaption>
         </figure>
       </div>
@@ -293,6 +321,21 @@
           <div class="proj-head"><h3>HTB Writeups</h3><span class="proj-kind" data-i18n="proj.p3.kind">CTF / Red Team</span></div>
           <p data-i18n="proj.p3.d">Raccolta di writeup Hack The Box: box Insane multi-dominio Active Directory con catene cross-realm Kerberos e AD CS (ESC13 → RBCD → DCSync → ESC1) e, in coda, box cloud Hard con catene SSRF → IMDS → SQS → container escape su AWS.</p>
           <ul class="proj-tags"><li>Active Directory</li><li>Kerberos</li><li>Privilege Escalation</li><li>Cloud (AWS)</li></ul>
+        </article>
+        <article class="proj-card">
+          <div class="proj-head"><h3>AdaptixC2 S3 Transport</h3><span class="proj-kind" data-i18n="proj.p6.kind">C2 Development</span></div>
+          <p data-i18n="proj.p6.d">Canale C2 custom basato su Amazon S3 per il framework AdaptixC2: beacon agent in C++ con protocollo a 3 fasi (heartbeat, output, tasking), crittografia AES-GCM con epoch ratchet e firma SigV4, e listener server in Go. Supporta output di grandi dimensioni con upload multipart e presigned POST.</p>
+          <ul class="proj-tags"><li>C/C++</li><li>Go</li><li>AWS S3</li><li>AdaptixC2</li><li>AES-GCM</li></ul>
+        </article>
+        <article class="proj-card">
+          <div class="proj-head"><h3>Stratum Naked Beacon</h3><span class="proj-kind" data-i18n="proj.p7.kind">C2 Development</span></div>
+          <p data-i18n="proj.p7.d">Modalità di build naked per il beacon Stratum C2 in Rust: flag compile-time che rimuove AMSI HWBP bypass, ETW bypass e BOF crash guard VEH dal beacon, delegando l'intera catena di evasione al loader esterno. Elimina conflitti sui debug register e sulla VEH chain tra beacon e loader.</p>
+          <ul class="proj-tags"><li>Rust</li><li>Stratum C2</li><li>AMSI/ETW Bypass</li><li>HWBP</li></ul>
+        </article>
+        <article class="proj-card">
+          <div class="proj-head"><h3>Custom Evasion Loader</h3><span class="proj-kind" data-i18n="proj.p8.kind">Offensive Tooling</span></div>
+          <p data-i18n="proj.p8.d">Loader custom per beacon C2 con AMSI bypass (CLR string corruption via LdrRegisterDllNotification) ed ETW bypass (hardware breakpoint su NtTraceControl con VEH persistente). Varianti EXE diretto e DLL sideloading con IAT patching, testato FUD contro soluzioni EDR enterprise.</p>
+          <ul class="proj-tags"><li>C/C++</li><li>EDR Evasion</li><li>DLL Sideloading</li><li>HWBP</li></ul>
         </article>
       </div>
     </section>

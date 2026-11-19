@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 820" style="background-color:#17151c" role="graphics-document document" aria-roledescription="flowchart">
+<style>
+  text{font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;fill:#f2ede6}
+  .node{rx:6;ry:6;stroke-width:1.5}
+  .edge{stroke:#8f8797;stroke-width:1.5;fill:none;marker-end:url(#arrow)}
+  .cluster{fill:none;stroke:#2c2833;stroke-width:1.5;stroke-dasharray:6,4;rx:10;ry:10}
+  .cluster-label{font-size:13px;fill:#ff6b3d;font-weight:700;letter-spacing:1px}
+  .node-label{font-size:13px;text-anchor:middle;dominant-baseline:central}
+  .sub-label{font-size:11px;fill:#a49caa;text-anchor:middle;dominant-baseline:central}
+</style>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,3.5 L0,7z" fill="#8f8797"/></marker>
+</defs>
+
+<!-- Cluster: Child Domain -->
+<rect class="cluster" x="20" y="60" width="520" height="340"/>
+<text class="cluster-label" x="40" y="90">CHILD DOMAIN</text>
+
+<!-- Cluster: Forest Root Domain -->
+<rect class="cluster" x="580" y="60" width="520" height="340"/>
+<text class="cluster-label" x="600" y="90">FOREST ROOT DOMAIN</text>
+
+<!-- Cluster: Enclave (External Trust) -->
+<rect class="cluster" x="1140" y="60" width="640" height="720"/>
+<text class="cluster-label" x="1160" y="90">ENCLAVE — EXTERNAL TRUST</text>
+
+<!-- Node 1: Foothold workstation -->
+<rect class="node" x="80" y="120" width="200" height="56" fill="#1a1210" stroke="#e07a3a"/>
+<text class="node-label" x="180" y="142">Workstation</text>
+<text class="sub-label" x="180" y="160">Initial foothold</text>
+
+<!-- Node 2: Kerberoast -->
+<rect class="node" x="80" y="220" width="200" height="56" fill="#121a24" stroke="#5b9bd5"/>
+<text class="node-label" x="180" y="242">Kerberoast</text>
+<text class="sub-label" x="180" y="260">SPN account → offline crack</text>
+
+<!-- Node 3: Domain Admin child -->
+<rect class="node" x="80" y="320" width="200" height="56" fill="#121a24" stroke="#5b9bd5"/>
+<text class="node-label" x="180" y="342">Domain Admin</text>
+<text class="sub-label" x="180" y="360">Child domain</text>
+
+<!-- Node 4: Golden Ticket + SID History -->
+<rect class="node" x="340" y="220" width="180" height="56" fill="#121a24" stroke="#5b9bd5"/>
+<text class="node-label" x="430" y="242">Golden Ticket</text>
+<text class="sub-label" x="430" y="260">+ SID History injection</text>
+
+<!-- Node 5: Root DC SYSTEM -->
+<rect class="node" x="640" y="120" width="200" height="56" fill="#121a24" stroke="#5b9bd5"/>
+<text class="node-label" x="740" y="142">Root DC</text>
+<text class="sub-label" x="740" y="160">Enterprise Admin → SYSTEM</text>
+
+<!-- Node 6: DCSync krbtgt -->
+<rect class="node" x="640" y="220" width="200" height="56" fill="#121a24" stroke="#5b9bd5"/>
+<text class="node-label" x="740" y="242">DCSync krbtgt</text>
+<text class="sub-label" x="740" y="260">Root domain hash</text>
+
+<!-- Node 7: Forged referral TGT -->
+<rect class="node" x="640" y="320" width="200" height="56" fill="#1a1210" stroke="#e07a3a"/>
+<text class="node-label" x="740" y="342">Silver Ticket</text>
+<text class="sub-label" x="740" y="360">Forged inter-realm referral TGT</text>
+
+<!-- Node 8: TGS CIFS -->
+<rect class="node" x="1200" y="120" width="220" height="56" fill="#121a24" stroke="#5b9bd5"/>
+<text class="node-label" x="1310" y="142">TGS CIFS</text>
+<text class="sub-label" x="1310" y="160">Cross-realm → Jump server</text>
+
+<!-- Node 9: Jump Server beacon -->
+<rect class="node" x="1200" y="220" width="220" height="56" fill="#1a1210" stroke="#e07a3a"/>
+<text class="node-label" x="1310" y="242">Jump Server</text>
+<text class="sub-label" x="1310" y="260">Beacon SYSTEM</text>
+
+<!-- Node 10: TGS LDAP -->
+<rect class="node" x="1460" y="120" width="220" height="56" fill="#121a24" stroke="#5b9bd5"/>
+<text class="node-label" x="1570" y="142">TGS LDAP</text>
+<text class="sub-label" x="1570" y="160">Cross-realm → Enclave DC</text>
+
+<!-- Node 11: RBCD write -->
+<rect class="node" x="1200" y="380" width="220" height="56" fill="#121a24" stroke="#5b9bd5"/>
+<text class="node-label" x="1310" y="402">RBCD Write</text>
+<text class="sub-label" x="1310" y="420">msDS-AllowedToActOnBehalf</text>
+
+<!-- Node 12: Machine TGT dump -->
+<rect class="node" x="1200" y="480" width="220" height="56" fill="#121a24" stroke="#5b9bd5"/>
+<text class="node-label" x="1310" y="502">Machine TGT</text>
+<text class="sub-label" x="1310" y="520">Dumped from jump server</text>
+
+<!-- Node 13: S4U2Self + S4U2Proxy -->
+<rect class="node" x="1200" y="580" width="220" height="56" fill="#121a24" stroke="#5b9bd5"/>
+<text class="node-label" x="1310" y="602">S4U2Self + S4U2Proxy</text>
+<text class="sub-label" x="1310" y="620">Impersonate Administrator</text>
+
+<!-- Node 14: Target file server -->
+<rect class="node" x="1200" y="690" width="220" height="56" fill="#2a1712" stroke="#ff6b3d"/>
+<text class="node-label" x="1310" y="710" fill="#ff6b3d" font-weight="700">Target File Server</text>
+<text class="sub-label" x="1310" y="728">Objective reached</text>
+
+<!-- Edges -->
+<path class="edge" d="M180,176 L180,220"/>
+<path class="edge" d="M180,276 L180,320"/>
+<path class="edge" d="M280,248 L340,248"/>
+<path class="edge" d="M430,276 L430,320 L180,320 L180,320"/>
+<path class="edge" d="M520,248 L640,148"/>
+<path class="edge" d="M740,176 L740,220"/>
+<path class="edge" d="M740,276 L740,320"/>
+<path class="edge" d="M840,148 L1200,148"/>
+<path class="edge" d="M840,350 L1200,148" stroke-dasharray="6,4"/>
+<path class="edge" d="M840,320 L1460,148" stroke-dasharray="6,4"/>
+<path class="edge" d="M1310,176 L1310,220"/>
+<path class="edge" d="M1310,276 L1310,380"/>
+<path class="edge" d="M1570,176 L1310,380" stroke-dasharray="6,4"/>
+<path class="edge" d="M1310,436 L1310,480"/>
+<path class="edge" d="M1310,536 L1310,580"/>
+<path class="edge" d="M1310,636 L1310,690"/>
+</svg>

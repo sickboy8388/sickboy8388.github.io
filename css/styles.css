@@ -286,6 +286,8 @@ a:hover { color: var(--accent-2); }
 .dot-db { background: #10202a; border-color: #57a9c4; }
 .dot-fs { background: #131f12; border-color: #8fce62; }
 .dot-mail { background: #241125; border-color: #c98fd6; }
+.dot-ad { background: #121a24; border-color: #5b9bd5; }
+.dot-c2 { background: #1a1210; border-color: #e07a3a; }
 
 .chain-grid { display: grid; grid-template-columns: 1fr; gap: 1.6rem; margin-top: 1.6rem; }
 .chain-card {
